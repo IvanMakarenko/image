@@ -24,34 +24,10 @@ This Tool is also capable of uploading & displaying video files using the <video
 
 ## Installation
 
-### Install via NPM
-
-Get the package
-
-```shell
-npm i --save-dev @editorjs/image
-```
-
-Include module at your application
-
-```javascript
-import ImageTool from '@editorjs/image';
-```
-
-### Other methods
-
 #### Manual downloading and connecting
 
 1. Upload folder `dist` from repository
 2. Add `dist/bundle.js` file to your page.
-
-#### Loading from CDN
-
-You can load a specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/image).
-
-`https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0`
-
-Then require this script on page with Editor.js through the `<script src=""></script>` tag.
 
 ## Usage
 
@@ -132,13 +108,17 @@ If toggling is enabled, an `image-tool--[button name]` class will be appended an
 
 This Tool returns `data` with following format
 
-| Field          | Type      | Description                     |
-| -------------- | --------- | ------------------------------- |
+| Field          | Type      | Description                      |
+| -------------- | --------- | -------------------------------- |
 | file           | `object`  | Uploaded file data. Any data got from backend uploader. Always contain the `url` property |
-| caption        | `string`  | image's caption                 |
-| withBorder     | `boolean` | add border to image             |
-| withBackground | `boolean` | need to add background          |
-| stretched      | `boolean` | stretch image to screen's width |
+| caption        | `string`  | image's caption                  |
+| subCaption     | `string`  | image's sub caption              |
+| withBorder     | `boolean` | add border to image              |
+| withBackground | `boolean` | need to add background           |
+| stretched      | `boolean` | stretch image to screen's width  |
+| roundedCircle  | `boolean` | rounded image to circle          |
+| roundedPill    | `boolean` | rounded image to pill            |
+| centerCaption  | `boolean` | vertical align for captions over |
 
 
 ```json
@@ -149,9 +129,13 @@ This Tool returns `data` with following format
             "url" : "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg"
         },
         "caption" : "Roadster // tesla.com",
+        "subCaption" : "Starting at $69,420",
         "withBorder" : false,
         "withBackground" : false,
-        "stretched" : true
+        "stretched" : true,
+        "roundedCircle" : false,
+        "roundedPill" : false,
+        "centerCaption" : false
     }
 }
 ```

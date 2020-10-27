@@ -2,6 +2,9 @@ import { make } from './ui';
 import bgIcon from './svg/background.svg';
 import borderIcon from './svg/border.svg';
 import stretchedIcon from './svg/stretched.svg';
+import circleIcon from './svg/rounded-circle.svg';
+import pillIcon from './svg/rounded-pill.svg';
+import centerIcon from './svg/center-caption.svg';
 
 /**
  * Working with Block Tunes
@@ -41,6 +44,21 @@ export default class Tunes {
         name: 'withBackground',
         icon: bgIcon,
         title: 'With background',
+      },
+      {
+        name: 'roundedCircle',
+        icon: circleIcon,
+        title: 'Rounded circle',
+      },
+      {
+        name: 'roundedPill',
+        icon: pillIcon,
+        title: 'Rounded pill',
+      },
+      {
+        name: 'centerCaption',
+        icon: centerIcon,
+        title: 'Center caption',
       },
     ];
   }

@@ -135,6 +135,30 @@
       }
     }
   }
+
+  &--roundedCircle {
+    ^&__image {
+      border-radius: 50% !important;
+    }
+  }
+
+  &--roundedPill {
+    ^&__image {
+      border-radius: 50rem !important;
+    }
+  }
+
+  &--centerCaption {
+    ^&__caption,
+    ^&__subcaption {
+      position: absolute;
+      top: 40%;
+      background: rgba(35,44,72,.06);
+    }
+    ^&__subcaption {
+      margin-top: 38px;
+    }
+  }
 }
 
 @keyframes image-preloader-spin {

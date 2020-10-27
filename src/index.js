@@ -34,9 +34,12 @@
  * @typedef {object} ImageToolData
  * @description Image Tool's input and output data format
  * @property {string} caption — image caption
+ * @property {string} subCaption — image subCaption
  * @property {boolean} withBorder - should image be rendered with border
  * @property {boolean} withBackground - should image be rendered with background
  * @property {boolean} stretched - should image be stretched to full width of container
+ * @property {boolean} roundedCircle - should image be rounded to circle
+ * @property {boolean} roundedPill - should image be rounded to pill
  * @property {object} file — Image file data returned from backend
  * @property {string} file.url — image URL
  */
@@ -57,6 +60,7 @@ import Uploader from './uploader';
  * @property {string} field - field name for uploaded image
  * @property {string} types - available mime-types
  * @property {string} captionPlaceholder - placeholder for Caption field
+ * @property {string} subCaptionPlaceholder - placeholder for sub Caption field
  * @property {object} additionalRequestData - any data to send with requests
  * @property {object} additionalRequestHeaders - allows to pass custom headers with Request
  * @property {string} buttonContent - overrides for Select File button
@@ -119,6 +123,7 @@ export default class ImageTool {
       field: config.field || 'image',
       types: config.types || 'image/*',
       captionPlaceholder: this.api.i18n.t(config.captionPlaceholder || 'Caption'),
+      subCaptionPlaceholder: this.api.i18n.t(config.subCaptionPlaceholder || 'SubCaption'),
       buttonContent: config.buttonContent || '',
       uploader: config.uploader || undefined,
       actions: config.actions || [],
@@ -185,8 +190,10 @@ export default class ImageTool {
    */
   save() {
     const caption = this.ui.nodes.caption;
+    const subCaption = this.ui.nodes.subCaption;
 
     this._data.caption = caption.innerHTML;
+    this._data.subCaption = subCaption.innerHTML;
 
     return this.data;
   }
@@ -299,6 +306,8 @@ export default class ImageTool {
 
     this._data.caption = data.caption || '';
     this.ui.fillCaption(this._data.caption);
+    this._data.subCaption = data.subCaption || '';
+    this.ui.fillSubCaption(this._data.subCaption);
 
     Tunes.tunes.forEach(({ name: tune }) => {
       const value = typeof data[tune] !== 'undefined' ? data[tune] === true || data[tune] === 'true' : false;

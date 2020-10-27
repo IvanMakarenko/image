@@ -28,6 +28,9 @@ export default class Ui {
       caption: make('div', [this.CSS.input, this.CSS.caption], {
         contentEditable: !this.readOnly,
       }),
+      subCaption: make('div', [this.CSS.input, this.CSS.subCaption], {
+        contentEditable: !this.readOnly,
+      }),
     };
 
     /**
@@ -41,9 +44,11 @@ export default class Ui {
      *  </wrapper>
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
+    this.nodes.subCaption.dataset.placeholder = this.config.subCaptionPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
+    this.nodes.wrapper.appendChild(this.nodes.subCaption);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -67,6 +72,7 @@ export default class Ui {
       imagePreloader: 'image-tool__image-preloader',
       imageEl: 'image-tool__image-picture',
       caption: 'image-tool__caption',
+      subCaption: 'image-tool__subcaption',
     };
   };
 
@@ -221,6 +227,18 @@ export default class Ui {
   fillCaption(text) {
     if (this.nodes.caption) {
       this.nodes.caption.innerHTML = text;
+    }
+  }
+
+  /**
+   * Shows sub caption input
+   *
+   * @param {string} text - sub caption text
+   * @returns {void}
+   */
+  fillSubCaption(text) {
+    if (this.nodes.subCaption) {
+      this.nodes.subCaption.innerHTML = text;
     }
   }
 
