@@ -190,7 +190,9 @@ export default class ImageTool {
    */
   save() {
     const caption = this.ui.nodes.caption;
+    caption.innerHTML = caption.innerHTML.replace('<br>', '');
     const subCaption = this.ui.nodes.subCaption;
+    subCaption.innerHTML = subCaption.innerHTML.replace('<br>', '');
 
     this._data.caption = caption.innerHTML;
     this._data.subCaption = subCaption.innerHTML;
